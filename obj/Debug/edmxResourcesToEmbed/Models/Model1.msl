@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="lab2ModelStoreContainer" CdmEntityContainer="lab2Entities">
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="lab2Model.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="id_cli" ColumnName="id_cli" />
+          <ScalarProperty Name="nombre_cli" ColumnName="nombre_cli" />
+          <ScalarProperty Name="cedula_cli" ColumnName="cedula_cli" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

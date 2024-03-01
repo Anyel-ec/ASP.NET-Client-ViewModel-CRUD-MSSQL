@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="lab2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id_cli" />
+    </Key>
+    <Property Name="id_cli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_cli" Type="varchar" MaxLength="50" />
+    <Property Name="cedula_cli" Type="varchar" MaxLength="50" />
+    <Property Name="correo" Type="varchar" MaxLength="50" />
+    <Property Name="fechaNacimiento" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="lab2ModelStoreContainer">
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
