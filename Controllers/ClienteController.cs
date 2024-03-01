@@ -27,7 +27,45 @@ namespace Lab2.Controllers
                                  }).ToList();
             }
 
-                return View(listaClientes);
+            return View(listaClientes);
+
         }
+        public ActionResult Nuevo()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Nuevo(ClienteViewModel clienteViewModel)
+        {
+            try
+            {
+                // valida los data Annotations
+                if (ModelState.IsValid)
+                {
+                    // si todo es valido se procede a guardar
+                    using (lab2Entities db = new lab2Entities())
+                    {
+                        var cliente = new cliente();
+                        cliente.nombre_cli = clienteViewModel.nombre_cli;
+                        cliente.cedula_cli = clienteViewModel.cedula_cli;
+                        cliente.correo = clienteViewModel.correo;
+                        cliente.fechaNacimiento = clienteViewModel.fechaNacimiento;
+
+                        db.cliente.Add(cliente);
+                        db.SaveChanges();
+                    }
+                    return Redirect("~/Cliente/Index");
+                }
+                return View (clienteViewModel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+
     }
 }

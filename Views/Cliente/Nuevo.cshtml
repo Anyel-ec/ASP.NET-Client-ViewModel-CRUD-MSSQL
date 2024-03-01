@@ -1,0 +1,45 @@
+﻿@model List<Lab2.Models.ViewModels.ClienteViewModel>
+
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>Nuevo</h2>
+
+@using (Html.BeginForm("Nuevo", "Cliente", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-12">
+            <!--mediante anotaciones de html-->
+            @Html.LabelFor(d => d.nombre_cli)
+            @Html.TextBoxFor(o => o.nombre_cli, new { @class = "form-control" })
+
+            @Html.LabelFor(o => o.cedula_cli)
+            @Html.TextBoxFor(o => o.cedula_cli, new { @class = "form-control" })
+
+            @Html.LabelFor(o => o.correo)
+            @Html.TextBoxFor(o => o.correo, new { @class = "form-control" })
+
+            <!-- fecha de naicmeinto -->
+            @Html.LabelFor(o => o.fecha_nac)
+            @Html.EditorFor(o => o.fecha_nac, new { @class = "form-control" })
+
+            <br />
+            <div>
+                <input value="Guardar" class="btn btn-primary" type="submit"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+
+
+        </div>
+
+        </div>
+ }
+<div class="row">
+    <div class="col-12">
+                <a class="btn btn-danger mt-3 mb-3" href="~/index">Regresar</a>
+    </div>
+</div>
+          
+
