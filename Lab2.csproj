@@ -223,7 +223,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Cliente\index.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Nuevo.cshtml" />
     <Content Include="Views\Cliente\Editar.cshtml" />
   </ItemGroup>

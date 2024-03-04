@@ -69,12 +69,12 @@ namespace Lab2.Controllers
 
         ///////////////////////////////////////////////////////////////
 
-        public ActionResult Editar()
+        public ActionResult Editar(int id)
         {
             ClienteViewModel clienteViewModel = new ClienteViewModel();
             using (lab2Entities db = new lab2Entities())
             {
-                var cliente = db.cliente.Find(1);
+                var cliente = db.cliente.Find(id);
                 clienteViewModel.nombre_cli = cliente.nombre_cli;
                 clienteViewModel.cedula_cli = cliente.cedula_cli;
                 clienteViewModel.correo = cliente.correo;
@@ -82,11 +82,6 @@ namespace Lab2.Controllers
                 clienteViewModel.id_cli = cliente.id_cli;
             }
             return View (clienteViewModel);
-
-
-
-
-            return View();
         }
 
         [HttpPost]
@@ -100,13 +95,13 @@ namespace Lab2.Controllers
                     // si todo es valido se procede a guardar
                     using (lab2Entities db = new lab2Entities())
                     {
-                        var cliente = new cliente();
+                        var cliente = db.cliente.Find(clienteViewModel.id_cli);
                         cliente.nombre_cli = clienteViewModel.nombre_cli;
                         cliente.cedula_cli = clienteViewModel.cedula_cli;
                         cliente.correo = clienteViewModel.correo;
                         cliente.fechaNacimiento = clienteViewModel.fechaNacimiento;
 
-                        db.cliente.Add(cliente);
+                        db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
                     }
                     return Redirect("~/Cliente/Index");
@@ -117,6 +112,19 @@ namespace Lab2.Controllers
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            ClienteViewModel clienteViewModel = new ClienteViewModel();
+            using (lab2Entities db = new lab2Entities())
+            {
+                var cliente = db.cliente.Find(1);
+                db.cliente.Remove(cliente);
+                db.SaveChanges();
+            }
+            return View("~/Cliente/Index");
         }
 
 

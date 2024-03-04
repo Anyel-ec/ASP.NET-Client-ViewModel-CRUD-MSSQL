@@ -30,7 +30,7 @@
                         <td>@oCliente.correo</td>
                         <td>
                             <a class="btn btn-primary" href="@Url.Action("Editar", "Cliente", new {id=oCliente.id_cli})">Editar</a>
-                            <a class="btn btn-danger">Eliminar</a>
+                            <a class="btn btn-danger" href="@Url.Action("Eliminar", "Cliente", new {id=oCliente.id_cli})">Eliminar</a>
                         </td>
                     </tr>
                 }
