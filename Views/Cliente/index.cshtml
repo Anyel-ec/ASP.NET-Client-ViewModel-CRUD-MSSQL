@@ -6,30 +6,36 @@
 }
 
 <h2>index</h2>
-
 <div class="row">
     <div class="col-12">
         <a class="btn btn-success mt-3 mb-3" href="~/Cliente/Nuevo">Nuevo</a>
         <br />
         <table class="table table-bordered">
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Cedula</th>
-                <th>Correo</th>
-            </tr>
-            @foreach (var oCliente in Model)
-            {
-                <td>@oCliente.id_cli </td>
-                <td>@oCliente.nombre_cli </td>
-                <td>@oCliente.cedula_cli </td>
-                <td>@oCliente.correo </td>
-            }
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Cedula</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var oCliente in Model)
+                {
+                    <tr>
+                        <td>@oCliente.id_cli</td>
+                        <td>@oCliente.nombre_cli</td>
+                        <td>@oCliente.cedula_cli</td>
+                        <td>@oCliente.correo</td>
+                        <td>
+                            <a class="btn btn-primary" href="@Url.Action("Editar", "Cliente", new {id=oCliente.id_cli})">Editar</a>
+                            <a class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
-
     </div>
-
-
-
-
 </div>
+

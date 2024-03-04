@@ -1,16 +1,19 @@
 ﻿@model Lab2.Models.ViewModels.ClienteViewModel
-
 @{
-    ViewBag.Title = "Nuevo";
+    ViewBag.Title = "Editar";
 }
 
-<h2>Nuevo</h2>
+<h2>Editar</h2>
 
-@using (Html.BeginForm("Nuevo", "Cliente", FormMethod.Post))
+@using (Html.BeginForm("Editar", "Cliente", FormMethod.Post))
 {
     <div class="row">
         <div class="col-12">
             <!--mediante anotaciones de html-->
+            @Html.HiddenFor(d => d.id_cli)
+
+
+
             @Html.LabelFor(d => d.nombre_cli)
             @Html.TextBoxFor(d => d.nombre_cli, new { @class = "form-control" })
             @Html.ValidationMessageFor(d => d.nombre_cli, "", new { @class = "text-danger" })
@@ -25,14 +28,14 @@
 
             <!-- fecha de naicmeinto -->
             @Html.LabelFor(d => d.fechaNacimiento)
-            @Html.TextBoxFor(d => d.fechaNacimiento, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
-            @Html.ValidationMessageFor(d => d.fechaNacimiento, "", new { @class = "text-danger" })
-
+            @Html.EditorFor(d => d.fechaNacimiento, new { @class = "form-control" })
 
             <br />
             <div>
-                <input value="Guardar" class="btn btn-primary" type="submit" />
+                <input value="Editar" class="btn btn-primary" type="submit" />
             </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Editar</button>
 
 
         </div>
