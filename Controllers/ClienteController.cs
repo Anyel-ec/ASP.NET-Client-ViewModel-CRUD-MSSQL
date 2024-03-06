@@ -12,11 +12,13 @@ namespace Lab2.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            // conexion a la base de datos
+            // lista de clientes
             List<ListClienteViewModel> listaClientes;
+            // conexion a la base de datos 
 
             using (lab2Entities db = new lab2Entities())
             {
+                // almacena la lista de clientes
                 listaClientes = (from c in db.cliente
                                  select new ListClienteViewModel
                                  {
@@ -24,12 +26,13 @@ namespace Lab2.Controllers
                                      nombre_cli = c.nombre_cli,
                                      cedula_cli = c.cedula_cli,
                                      correo = c.correo
-                                 }).ToList();
+                                 }).ToList(); // convierte a lista
             }
-
+            // retorna la lista de clientes by Anyel EC
             return View(listaClientes);
 
         }
+
         public ActionResult Nuevo()
         {
            
@@ -41,28 +44,29 @@ namespace Lab2.Controllers
         {
             try
             {
-                // valida los data Annotations
-                if (ModelState.IsValid)
+                if (ModelState.IsValid)// valida los data Annotations
                 {
-                    // si todo es valido se procede a guardar
+                    // usar la conexion a la base de datos
                     using (lab2Entities db = new lab2Entities())
                     {
+                        // se crea un objeto de tipo cliente
                         var cliente = new cliente();
+                        // se asignan los valores del cliente
                         cliente.nombre_cli = clienteViewModel.nombre_cli;
                         cliente.cedula_cli = clienteViewModel.cedula_cli;
                         cliente.correo = clienteViewModel.correo;
                         cliente.fechaNacimiento = clienteViewModel.fechaNacimiento;
-
+                        // se agrega el cliente a la tabla cliente
                         db.cliente.Add(cliente);
-                        db.SaveChanges();
+                        db.SaveChanges(); // se guardan los cambios
                     }
-                    return Redirect("~/Cliente/Index");
+                    return Redirect("~/Cliente/Index"); // redirecciona a la lista de clientes
                 }
-                return View (clienteViewModel);
+                return View (clienteViewModel); // retorna la vista con el modelo
             }
-            catch (Exception ex)
+            catch (Exception ex) // si hay un error
             {
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message); // lanza una excepcion
             }
         }
 
@@ -71,16 +75,21 @@ namespace Lab2.Controllers
 
         public ActionResult Editar(int id)
         {
+            // se crea un objeto de tipo clienteViewModel
             ClienteViewModel clienteViewModel = new ClienteViewModel();
+            // se usa la conexion a la base de datos
             using (lab2Entities db = new lab2Entities())
             {
+                // se busca el cliente por el id
                 var cliente = db.cliente.Find(id);
+                // se asignan los valores del cliente al modelo
                 clienteViewModel.nombre_cli = cliente.nombre_cli;
                 clienteViewModel.cedula_cli = cliente.cedula_cli;
                 clienteViewModel.correo = cliente.correo;
                 clienteViewModel.fechaNacimiento = (DateTime)cliente.fechaNacimiento;
                 clienteViewModel.id_cli = cliente.id_cli;
             }
+            // se retorna la vista con el modelo
             return View (clienteViewModel);
         }
 
@@ -92,42 +101,46 @@ namespace Lab2.Controllers
                 // valida los data Annotations
                 if (ModelState.IsValid)
                 {
-                    // si todo es valido se procede a guardar
+                    // se usa la conexion a la base de datos
                     using (lab2Entities db = new lab2Entities())
                     {
+                        // se busca el cliente por el id del modelo clienteViewModel
                         var cliente = db.cliente.Find(clienteViewModel.id_cli);
                         cliente.nombre_cli = clienteViewModel.nombre_cli;
                         cliente.cedula_cli = clienteViewModel.cedula_cli;
                         cliente.correo = clienteViewModel.correo;
                         cliente.fechaNacimiento = clienteViewModel.fechaNacimiento;
-
+                        // se cambia el estado de la entidad
                         db.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
-                        db.SaveChanges();
+                        db.SaveChanges(); // se guardan los cambios
                     }
+                    // redirecciona a la lista de clientes
                     return Redirect("~/Cliente/Index");
                 }
+                // retorna la vista con el modelo
                 return View(clienteViewModel);
             }
-            catch (Exception ex)
+            catch (Exception ex) // si hay un error
             {
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message); // lanza una excepcion
             }
         }
 
-        [HttpGet]
-        public ActionResult Eliminar(int id)
+        [HttpGet] // metodo para eliminar
+        public ActionResult Eliminar(int id) // recibe el id del cliente
         {
+            // se crea un objeto de tipo clienteViewModel
             ClienteViewModel clienteViewModel = new ClienteViewModel();
-            using (lab2Entities db = new lab2Entities())
+            // se usa la conexion a la base de datos
+            using (lab2Entities db = new lab2Entities()) 
             {
-                var cliente = db.cliente.Find(1);
-                db.cliente.Remove(cliente);
-                db.SaveChanges();
+                var cliente = db.cliente.Find(id); // se busca el cliente por el id
+                db.cliente.Remove(cliente); // se elimina el cliente
+                db.SaveChanges(); // se guardan los cambios
             }
-            return View("~/Cliente/Index");
+            return Redirect("~/Cliente/Index"); // redirecciona a la lista de clientes
         }
-
-
+        
 
     }
 }

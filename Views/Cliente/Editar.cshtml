@@ -10,10 +10,7 @@
     <div class="row">
         <div class="col-12">
             <!--mediante anotaciones de html-->
-            @Html.HiddenFor(d => d.id_cli)
-
-
-
+            @Html.HiddenFor(d => d.id_cli) <!-- Campo oculto del id -->
             @Html.LabelFor(d => d.nombre_cli)
             @Html.TextBoxFor(d => d.nombre_cli, new { @class = "form-control" })
             @Html.ValidationMessageFor(d => d.nombre_cli, "", new { @class = "text-danger" })
@@ -25,7 +22,6 @@
             @Html.LabelFor(d => d.correo)
             @Html.TextBoxFor(d => d.correo, new { @class = "form-control" })
             @Html.ValidationMessageFor(d => d.correo, "", new { @class = "text-danger" })
-
             <!-- fecha de naicmeinto -->
             @Html.LabelFor(d => d.fechaNacimiento)
             @Html.EditorFor(d => d.fechaNacimiento, new { @class = "form-control" })
@@ -34,11 +30,7 @@
             <div>
                 <input value="Editar" class="btn btn-primary mt-5" type="submit" />
             </div>
-
-
-
         </div>
-
     </div>
 }
 <div class="row">
@@ -46,5 +38,25 @@
         <a class="btn btn-danger mt-3 mb-3" href="~/Home/Index">Regresar</a>
     </div>
 </div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jquery")
+
+    <!--Script de jquery para el data picker-->
+    <script>
+        $(function () {
+            $("#fechaNacimiento").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                showOn: "button",
+                buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+                buttonText: "Seleccionar fecha",
+            });
+        });
+        </script>
+
+}
+
 
 

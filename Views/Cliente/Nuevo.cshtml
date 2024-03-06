@@ -3,47 +3,75 @@
 @{
     ViewBag.Title = "Nuevo";
 }
-
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
 <h2>Nuevo</h2>
+<style>
+    .custom-datepicker{
+        width: 17em;
+        color: red;
+        background-color: #f0f0f0;
+    }
+</style>
 
 @using (Html.BeginForm("Nuevo", "Cliente", FormMethod.Post))
 {
     <div class="row">
         <div class="col-12">
-            <!--mediante anotaciones de html-->
+            <!--Nombre -->
             @Html.LabelFor(d => d.nombre_cli)
             @Html.TextBoxFor(d => d.nombre_cli, new { @class = "form-control" })
             @Html.ValidationMessageFor(d => d.nombre_cli, "", new { @class = "text-danger" })
-
+            <!-- Cedula -->
             @Html.LabelFor(d => d.cedula_cli)
             @Html.TextBoxFor(d => d.cedula_cli, new { @class = "form-control" })
             @Html.ValidationMessageFor(d => d.cedula_cli, "", new { @class = "text-danger" })
-
+            <!-- Correo-->
             @Html.LabelFor(d => d.correo)
             @Html.TextBoxFor(d => d.correo, new { @class = "form-control" })
             @Html.ValidationMessageFor(d => d.correo, "", new { @class = "text-danger" })
-
-            <!-- fecha de naicmeinto -->
+            <!-- fecha de nacimientyo -->
             @Html.LabelFor(d => d.fechaNacimiento)
             @Html.TextBoxFor(d => d.fechaNacimiento, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
             @Html.ValidationMessageFor(d => d.fechaNacimiento, "", new { @class = "text-danger" })
-
-
             <br />
             <div>
                 <input value="Guardar" class="btn btn-primary" type="submit" />
             </div>
-
-
         </div>
 
     </div>
 }
 <div class="row">
     <div class="col-12">
-        
+
         <a class="btn btn-danger mt-3 mb-3" href="~/Cliente/Index">Regresar</a>
     </div>
 </div>
+
+@section Scripts{
+
+    <!--Script de jquery para el diseño del datapicker-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#fechaNacimiento").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                showOn: "button",
+                buttonImageOnly: false,
+                
+                buttonText: ' Seleccionar fecha', 
+                beforeShow: function (input, inst) {
+                    $('#ui-datepicker-div').addClass('custom-datepicker'); 
+                }
+            });
+        });
+    </script>
+
+}
 
 

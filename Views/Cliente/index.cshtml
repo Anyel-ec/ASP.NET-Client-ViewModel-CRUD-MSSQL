@@ -21,9 +21,11 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- iterar todos los clientes que existen en el modelo-->
                 @foreach (var oCliente in Model)
                 {
                     <tr>
+                        <!-- mostrar los campos del cliente-->
                         <td>@oCliente.id_cli</td>
                         <td>@oCliente.nombre_cli</td>
                         <td>@oCliente.cedula_cli</td>
