@@ -9,6 +9,7 @@
     <Property Name="cedula_cli" Type="varchar" MaxLength="50" />
     <Property Name="correo" Type="varchar" MaxLength="50" />
     <Property Name="fechaNacimiento" Type="datetime" />
+    <Property Name="foto" Type="image" />
   </EntityType>
   <EntityContainer Name="lab2ModelStoreContainer">
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />

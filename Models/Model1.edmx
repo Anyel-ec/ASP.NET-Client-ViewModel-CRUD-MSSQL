@@ -14,6 +14,7 @@
           <Property Name="cedula_cli" Type="varchar" MaxLength="50" />
           <Property Name="correo" Type="varchar" MaxLength="50" />
           <Property Name="fechaNacimiento" Type="datetime" />
+          <Property Name="foto" Type="image" />
         </EntityType>
         <EntityContainer Name="lab2ModelStoreContainer">
           <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
@@ -32,6 +33,7 @@
           <Property Name="cedula_cli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityContainer Name="lab2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="cliente" EntityType="Self.cliente" />
@@ -50,6 +52,7 @@
                 <ScalarProperty Name="cedula_cli" ColumnName="cedula_cli" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -9,6 +9,7 @@
           <ScalarProperty Name="cedula_cli" ColumnName="cedula_cli" />
           <ScalarProperty Name="correo" ColumnName="correo" />
           <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -19,5 +19,6 @@ namespace Lab2.Models
         public string cedula_cli { get; set; }
         public string correo { get; set; }
         public Nullable<System.DateTime> fechaNacimiento { get; set; }
+        public byte[] foto { get; set; } 
     }
 }

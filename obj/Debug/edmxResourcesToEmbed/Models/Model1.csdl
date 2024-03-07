@@ -9,6 +9,7 @@
     <Property Name="cedula_cli" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="fechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityContainer Name="lab2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="cliente" EntityType="Self.cliente" />
