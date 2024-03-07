@@ -31,8 +31,12 @@
                         <td>@oCliente.cedula_cli</td>
                         <td>@oCliente.correo</td>
                         <td>
-                            <a class="btn btn-primary" href="@Url.Action("Editar", "Cliente", new {id=oCliente.id_cli})">Editar</a>
-                            <a class="btn btn-danger" href="@Url.Action("Eliminar", "Cliente", new {id=oCliente.id_cli})">Eliminar</a>
+                            <a class="btn btn-primary"
+                               href="@Url.Action("Editar", "Cliente", new {id=oCliente.id_cli})">Editar</a>
+                            <a class="btn btn-danger"
+                               href="@Url.Action("Eliminar", "Cliente", new {id=oCliente.id_cli})"
+                               onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?');">Eliminar</a>
+
                         </td>
                     </tr>
                 }
