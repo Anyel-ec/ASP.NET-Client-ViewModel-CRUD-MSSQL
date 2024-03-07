@@ -15,7 +15,7 @@ This ASP.NET MVC application is designed to manage clients in an MSSQL database,
 ### Edit Client
 ![Alt text](docs/edit.PNG) 
 ### Delete
-![Alt text](docs/delete.PNG) 
+![Alt text](docs/alert.PNG) 
 ### Delete After
 ![Alt text](docs/delete_after.PNG) 
 

@@ -14,7 +14,7 @@ Este proyecto de aplicación ASP.NET MVC está diseñado para gestionar clientes
 ### Editar Cliente
 ![Alt text](docs/edit.PNG) 
 ### Eliminar
-![Alt text](docs/delete.PNG) 
+![Alt text](docs/alert.PNG) 
 ### Luego de Eliminar
 ![Alt text](docs/delete_after.PNG) 
 
